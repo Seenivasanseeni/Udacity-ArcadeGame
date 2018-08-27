@@ -114,3 +114,9 @@ blockheight=83;
         isReady: isReady
     };
 })();
+
+//todo implement randomRange method()
+
+var randomRange=function(start,end){
+    return Math.floor(Math.random()*(end-start)+start);
+}

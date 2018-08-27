@@ -7,8 +7,8 @@ var Enemy = function() {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.v=100;
-    this.x=Math.random()*width;
-    this.y=Math.random()*(height)/2;
+    this.x=randomRange(0,width);
+    this.y=randomRange(0,height/2);
 };
 
 // Update the enemy's position, required method for game
@@ -20,7 +20,7 @@ Enemy.prototype.update = function(dt) {
     this.x+=dt*this.v;
     if(this.x>width){
         this.x=0;
-        this.y=Math.random()*(height)/2;
+        this.y=randomRange(0,height/2);
     }
 };
 
