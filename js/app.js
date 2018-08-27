@@ -48,8 +48,23 @@ Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);    
 }
 
-Player.prototype.handleInput=function(){
-
+Player.prototype.handleInput=function(keyCode){
+    switch(keyCode){
+        case "left": //left
+                this.x=Math.max(0,this.x-blockwidth); 
+                break;
+        case "up":  //up
+            this.y=Math.max(0,this.y-blockheight);    
+            break;
+        case "right": 
+                this.x=Math.min(width,this.x+blockwidth); 
+                //right
+                break;
+        case "down":
+            this.y=Math.min(height,this.y+blockheight);
+                //down 
+            break;
+    }
 }
 
 
