@@ -7,8 +7,8 @@
 blockwidth=101;
 blockheight=83;
 
-width=blockwidth*5; //fallback 505
-height=blockheight*6 ; //falback to 606
+width=blockwidth*4; //fallback 505
+height=blockheight*5 ; //falback to 606
 console.log(width,height);
 (function() {
     var resourceCache = {};

@@ -73,12 +73,11 @@ Player.prototype.handleInput=function(keyCode){
             this.y=Math.max(0,this.y-blockheight);    
             break;
         case "right": 
-                this.x=Math.min(width-blockwidth,this.x+blockwidth); 
+                this.x=Math.min(width,this.x+blockwidth); 
                 //right
                 break;
         case "down":
-            console.log("in down ",this.y);
-            this.y=Math.min(height-blockheight  ,this.y+blockheight);
+            this.y=Math.min(height  ,this.y+blockheight);
                 //down 
             break;
     }
