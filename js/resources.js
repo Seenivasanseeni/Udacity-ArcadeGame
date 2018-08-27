@@ -4,6 +4,11 @@
  * a simple "caching" layer so it will reuse cached images if you attempt
  * to load the same image multiple times.
  */
+width=505;
+height=606;
+blockwidth=101;
+blockheight=83;
+
 (function() {
     var resourceCache = {};
     var loading = [];
