@@ -22,6 +22,9 @@ Enemy.prototype.update = function(dt) {
         this.x=0;
         this.y=randomRange(0,height/2);
     }
+    if(player.ifCollided(this)){
+        player.reset();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -44,6 +47,19 @@ Player.prototype.update=function(){
 
 }
 
+var inRange=function(i,start,end){
+    return i>=start && i<=end;
+}
+
+Player.prototype.ifCollided=function(enemy){
+    return inRange(this.x,enemy.x-blockwidth/2,enemy.x+blockwidth/2) && inRange(this.y,enemy.y-blockheight/2,enemy.y+blockheight/2);    
+}
+
+Player.prototype.reset=function(){
+    this.x=blockwidth*2;
+    this.y=blockheight*5;
+}
+
 Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);    
 }
@@ -61,6 +77,7 @@ Player.prototype.handleInput=function(keyCode){
                 //right
                 break;
         case "down":
+            console.log("in down ",this.y);
             this.y=Math.min(height,this.y+blockheight);
                 //down 
             break;
