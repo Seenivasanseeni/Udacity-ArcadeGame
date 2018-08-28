@@ -18,8 +18,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if(won)
-        return
+    if(won){
+        this.sprite='images/Star.png';
+        return;
+    }
     this.x+=dt*this.v;
     if(this.x>width+blockwidth){
         this.x=-blockwidth*2;
@@ -47,8 +49,9 @@ var Player= function(){
 }
 
 Player.prototype.update=function(){
-    if(inRange(this.y,0,10))
+    if(inRange(this.y,0,10)){
         won=true;
+    }
 }
 
 var inRange=function(i,start,end){
