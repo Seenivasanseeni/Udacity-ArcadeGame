@@ -6,7 +6,7 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.v=100;
+    this.v=randomRange(50,300);
     this.x=randomRange(0,width);
     this.y=randomRange(blockheight,height-blockheight); 
 };
@@ -20,7 +20,7 @@ Enemy.prototype.update = function(dt) {
     this.x+=dt*this.v;
     if(this.x>width){
         this.x=0;
-        this.y=randomRange(0,height/2);
+        this.y=randomRange(blockheight,height-blockheight); 
     }
     if(player.ifCollided(this)){
         player.reset();
