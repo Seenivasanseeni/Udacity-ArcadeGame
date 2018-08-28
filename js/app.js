@@ -1,4 +1,5 @@
 // Enemies our player must avoid
+won=false
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -17,9 +18,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if(won)
+        return
     this.x+=dt*this.v;
-    if(this.x>width){
-        this.x=0;
+    if(this.x>width+blockwidth){
+        this.x=-blockwidth*2;
         this.y=randomRange(blockheight,height-blockheight); 
     }
     if(player.ifCollided(this)){
@@ -44,7 +47,8 @@ var Player= function(){
 }
 
 Player.prototype.update=function(){
-
+    if(inRange(this.y,0,10))
+        won=true;
 }
 
 var inRange=function(i,start,end){
