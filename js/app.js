@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-won=false
+won=0; //0 means no win 1 means won 2 means won and displayed modal
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -18,10 +18,14 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if(won){
+    if(won==2){
+        return;
+    }
+    if(won==1){
         this.sprite='images/Star.png';
         return;
     }
+    //control comes here only when game is still on
     this.x+=dt*this.v;
     if(this.x>width+blockwidth){
         this.x=-blockwidth*2;
@@ -49,8 +53,17 @@ var Player= function(){
 }
 
 Player.prototype.update=function(){
+    if(won==2){
+        return;
+    }
     if(inRange(this.y,0,10)){
-        won=true;
+        if(won==1){ //already won
+            won=2;
+            return;
+        }
+        //control comes here only when games has just ended
+        won=1;
+        displayModal();
     }
 }
 
